@@ -1,9 +1,9 @@
-# PLATFORM to Orbit Workspace
+# Reddit to Orbit Workspace
 
 <!-- Update repo name -->
-![Build Status](https://github.com/orbit-love/repo-name/workflows/CI/badge.svg)
+![Build Status](https://github.com/orbit-love/community-js-reddit-orbit/workflows/CI/badge.svg)
 <!-- Generator at https://badge.fury.io/ -->
-[![Gem Version](https://badge.fury.io/rb/dev_orbit.svg)](https://badge.fury.io/rb/dev_orbit)
+[![npm version](https://badge.fury.io/js/%40orbit-love%2Freddit.svg)](https://badge.fury.io/js/%40orbit-love%2Freddit)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](.github/CODE_OF_CONDUCT.md)
 
 One-line description about what this is and what language it is in.
@@ -25,7 +25,7 @@ The application requires the following environment variables:
 
 | Variable | Description | More Info
 |---|---|--|
-| `NAME` | Brief description | Where to get it 
+| `NAME` | Brief description | Where to get it
 | `ORBIT_API_KEY` | API key for Orbit | Found in `Account Settings` in your Orbit workspace
 | `ORBIT_WORKSPACE_ID` | ID for your Orbit workspace | Last part of the Orbit workspace URL, i.e. `https://app.orbit.love/my-workspace`, the ID is `my-workspace`
 
