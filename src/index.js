@@ -1,5 +1,6 @@
 const pkg = require('../package.json')
 const posts = require('./posts')
+const comments = require('./comments')
 const snoowrap = require('snoowrap')
 const OrbitActivities = require('@orbit-love/activities')
 
@@ -41,6 +42,18 @@ class OrbitReddit {
     preparePosts(list) {
         return posts.prepare(list)
     }
+
+    getComments(options) {
+        if(!options) throw new Error('You must provide an options object')
+        if(!options.hours) throw new Error('You must provide an hours property')
+        if(!options.subreddit) throw new Error('You must provide a subreddit property')
+        return comments.get(this.reddit, options)
+    }
+
+    prepareComments(list) {
+        return comments.prepare(list)
+    }
+
 
     addActivities(activities) {
         return new Promise((resolve, reject) => {

@@ -43,19 +43,6 @@ Install the package with the following command
 $ npm install @orbit-love/reddit
 ```
 
-Use the package with the following snippet.
-
-```js
-const OrbitReddit = require('@orbit-love/reddit')
-const orbitReddit = new OrbitReddit()
-
-// Allows you to go back a number of hours and only get posts in that timeframe
-const posts = await orbitReddit.getPosts({ subreddit: 'javascript', hours: 24 })
-const prepared = await orbitReddit.preparePosts(posts)
-const added = await orbitReddit.addActivities(prepared)
-console.log(added) // "Added n activities to your Orbit workspace"
-```
-
 The standard initialization of the library requires the following signature:
 
 ```js
@@ -70,12 +57,39 @@ const OrbitReddit = require('@orbit-love/reddit')
 const orbitReddit = new OrbitReddit()
 ```
 
+### Add New Posts In Subreddit
+
+```js
+const OrbitReddit = require('@orbit-love/reddit')
+const orbitReddit = new OrbitReddit()
+
+// Allows you to go back a number of hours and only get posts in that timeframe
+const posts = await orbitReddit.getPosts({ subreddit: 'javascript', hours: 24 })
+const prepared = await orbitReddit.preparePosts(posts)
+const added = await orbitReddit.addActivities(prepared)
+console.log(added) // "Added n activities to your Orbit workspace"
+```
+
+### Add New Comments In Subreddit
+
+```js
+const OrbitReddit = require('@orbit-love/reddit')
+const orbitReddit = new OrbitReddit()
+
+// Allows you to go back a number of hours and only get posts in that timeframe
+const comments = await orbitReddit.getComments({ subreddit: 'javascript', hours: 24 })
+const prepared = await orbitReddit.prepareComments(comments)
+const added = await orbitReddit.addActivities(prepared)
+console.log(added) // "Added n activities to your Orbit workspace"
+```
+
 ## CLI Usage
 
 To use this package you do not need to install it, but will need Node.js installed on your machine.
 
 ```
 npx @orbit-love/reddit --posts --subreddit=javascript
+npx @orbit-love/reddit --comments --subreddit=javascript
 ```
 
 By default this will get the last 24 hours worth of activity, but this can be explicitly overridden:

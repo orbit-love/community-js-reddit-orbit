@@ -1,10 +1,10 @@
 const moment = require('moment')
 
-function getAllNewPosts(client, options) {
+function getAllNewComments(client, options) {
     return new Promise(async (resolve, reject) => {
         const { subreddit, hours } = options
         try {
-            let listing = await getInitialPosts(client, subreddit)
+            let listing = await getInitialComments(client, subreddit)
 
             let lastPage = false
             while(!lastPage) {
@@ -21,11 +21,11 @@ function getAllNewPosts(client, options) {
     })
 }
 
-function getInitialPosts(client, subreddit) {
+function getInitialComments(client, subreddit) {
     return new Promise((resolve, reject) => {
         try {
             const options = { limit: 100 }
-            client.getSubreddit(subreddit).getNew(options).then(results => {
+            client.getSubreddit(subreddit).getNewComments(options).then(results => {
                 resolve(results)
             })
         } catch(error) {
@@ -64,7 +64,7 @@ function removeOldPosts(listing, hours) {
 const get = (client, options) => {
     return new Promise((resolve, reject) => {
         try {
-            getAllNewPosts(client, options).then(posts => {
+            getAllNewComments(client, options).then(posts => {
                 resolve(posts)
             })
         } catch(error) {
@@ -73,17 +73,17 @@ const get = (client, options) => {
     })
 }
 
-const prepare = posts => {
+const prepare = comments => {
     return new Promise(resolve => {
-        const p = posts.map(item => {
+        const p = comments.map(item => {
             return {
                 activity: {
-                    description: `Title: ${item.title}`,
+                    description: item.body,
                     link: `https://reddit.com${item.permalink}`,
                     link_text: `View post on ${item.subreddit_name_prefixed}`,
-                    title: `Posted to ${item.subreddit_name_prefixed}`,
-                    activity_type: 'reddit:post',
-                    key: `reddit-post-${item.author.name}-${item.created_utc}`,
+                    title: `Comment on ${item.link_title} in ${item.subreddit_name_prefixed}`,
+                    activity_type: 'reddit:comment',
+                    key: `reddit-comment-${item.author.name}-${item.created_utc}`,
                     occurred_at: new Date(item.created_utc*1000).toISOString()
                 },
                 identity: {
