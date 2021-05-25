@@ -32,6 +32,7 @@
   "dependencies": {
     "@orbit-love/activities": "^0.1.1",
     "moment": "^2.29.1",
-    "snoowrap": "^1.23.0"
+    "snoowrap": "^1.23.0",
+    "yargs": "^17.0.1"
   }
 }
