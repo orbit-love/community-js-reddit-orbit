@@ -1,12 +1,10 @@
 # Reddit to Orbit Workspace
 
-<!-- Update repo name -->
 ![Build Status](https://github.com/orbit-love/community-js-reddit-orbit/workflows/CI/badge.svg)
-<!-- Generator at https://badge.fury.io/ -->
 [![npm version](https://badge.fury.io/js/%40orbit-love%2Freddit.svg)](https://badge.fury.io/js/%40orbit-love%2Freddit)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](.github/CODE_OF_CONDUCT.md)
 
-One-line description about what this is and what language it is in.
+This is a JavaScript package that can be used to integrate new Reddit interactions from a specified subreddit into your organization's Orbit workspace.
 
 |<p align="left">:sparkles:</p> This is a *community project*. The Orbit team does its best to maintain it and keep it up to date with any recent API changes.<br/><br/>We welcome community contributions to make sure that it stays current. <p align="right">:sparkles:</p>|
 |-----------------------------------------|
@@ -15,9 +13,14 @@ One-line description about what this is and what language it is in.
 
 ## First Time Setup
 
-<!-- If this section is short, delete docs/setup.md and write the guide under this heading -->
-
-To set up this integration you will need some details from PLATFORM. To get these details please follow the [First Time Setup guide](docs/setup.md).
+1. Head to your [Reddit App Preferences](https://www.reddit.com/prefs/apps/).
+2. Create a new app with the following settings:
+    1. Name: `orbit-community-integration`
+    2. Type: `script`
+    3. Description: `orbit.love community integration`
+    4. About URL: `https://github.com/orbit-love/community-js-reddit-orbit`
+    5. Redirect URI: `https://orbit.love`
+3. Take note of your `Client ID` which is just below your app name, and your `Client Secret`.
 
 ## Application Credentials
 
@@ -25,7 +28,10 @@ The application requires the following environment variables:
 
 | Variable | Description | More Info
 |---|---|--|
-| `NAME` | Brief description | Where to get it
+| `REDDIT_CLIENT_ID` | Client ID for your Reddit App | Follow the guide above
+| `REDDIT_CLIENT_SECRET` | Client Secret for your Reddit App | Follow the guide above
+| `REDDIT_USERNAME` | Your Reddit username | Your account credentials
+| `REDDIT_PASSWORD` | Your Reddit password | Your account credentials
 | `ORBIT_API_KEY` | API key for Orbit | Found in `Account Settings` in your Orbit workspace
 | `ORBIT_WORKSPACE_ID` | ID for your Orbit workspace | Last part of the Orbit workspace URL, i.e. `https://app.orbit.love/my-workspace`, the ID is `my-workspace`
 
@@ -34,32 +40,55 @@ The application requires the following environment variables:
 Install the package with the following command
 
 ```
-$ installation command
+$ npm install @orbit-love/reddit
 ```
 
 Use the package with the following snippet.
 
-```
-#
+```js
+const OrbitReddit = require('@orbit-love/reddit')
+const orbitReddit = new OrbitReddit()
+
+// Allows you to go back a number of hours and only get posts in that timeframe
+const posts = await orbitReddit.getPosts({ subreddit: 'javascript', hours: 24 })
+const prepared = await orbitReddit.preparePosts(posts)
+const added = await orbitReddit.addActivities(prepared)
+console.log(added) // "Added n activities to your Orbit workspace"
 ```
 
-<!-- Make sure all variants and standalone methods are explained. -->
+The standard initialization of the library requires the following signature:
+
+```js
+const OrbitReddit = require('@orbit-love/reddit')
+const orbitReddit = new OrbitReddit('orbitWorkspaceId', 'orbitApiKey', 'redditClientId', 'redditClientSecret', 'redditUsername', 'redditPassword')
+```
+
+If you have the following environment variables set: `ORBIT_WORKSPACE_ID`, `ORBIT_API_KEY`, `REDDIT_CLIENT_ID`, `REDDIT_CLIENT_SECRET`, `REDDIT_USERNAME` and `REDDIT_PASSWORD` then you can initialize the client as follows:
+
+```js
+const OrbitReddit = require('@orbit-love/reddit')
+const orbitReddit = new OrbitReddit()
+```
 
 ## CLI Usage
 
-To use this package you DO/DO NOT need to install it.
+To use this package you do not need to install it, but will need Node.js installed on your machine.
 
 ```
-#
+npx @orbit-love/reddit --posts --subreddit=javascript
 ```
 
-<!-- Explain any flags/config options -->
+By default this will get the last 24 hours worth of activity, but this can be explicitly overridden:
+
+```
+npx @orbit-love/reddit --posts --subreddit=javascript --hours=12
+```
 
 ## GitHub Actions Automation Setup
 
 ⚡ You can set up this integration in a matter of minutes using our GitHub Actions template. It will run regularly to add new activities to your Orbit workspace. All you need is a GitHub account.
 
-[See our guide for setting up this automation](#)
+[See our guide for setting up this automation](https://github.com/orbit-love/github-actions-templates/blob/main/Reddit)
 
 ## Contributing
 
