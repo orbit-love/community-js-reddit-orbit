@@ -46,7 +46,6 @@ async function main() {
                 return inTitle || inBody
             })
         }
-        console.log(comments.map(c => c.link_title))
         console.log(`Fetched ${comments.length} comments from the provided timeframe`)
         const prepared = await orbitReddit.prepareComments(comments)
         console.log(`Comments are prepared as Orbit activities. Sending them off now...`)

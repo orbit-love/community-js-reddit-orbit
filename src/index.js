@@ -66,7 +66,7 @@ class OrbitReddit {
                             if(result.reason && result.reason.errors && result.reason.errors.key) {
                                 stats.duplicates++
                             } else {
-                                throw new Error(result.reason.errors)
+                                throw new Error(JSON.stringify(result.reason))
                             }
                         } else {
                             stats.added++

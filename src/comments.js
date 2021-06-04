@@ -78,10 +78,10 @@ const prepare = comments => {
         const p = comments.map(item => {
             return {
                 activity: {
-                    description: item.body,
+                    description: `Post: ${item.link_title}\n\n${item.body}`,
                     link: `https://reddit.com${item.permalink}`,
                     link_text: `View post on ${item.subreddit_name_prefixed}`,
-                    title: `Comment on ${item.link_title} in ${item.subreddit_name_prefixed}`,
+                    title: `Comment in ${item.subreddit_name_prefixed}`,
                     tags: ['channel:reddit'],
                     activity_type: 'reddit:comment',
                     key: `reddit-comment-${item.author.name}-${item.created_utc}`,
@@ -92,7 +92,6 @@ const prepare = comments => {
                     source_host: 'reddit.com',
                     username: item.author.name,
                     url: `https://reddit.com/u/${item.author.name}`,
-                    uid: item.author_fullname
                 }
             }
         })

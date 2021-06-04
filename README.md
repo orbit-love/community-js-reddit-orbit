@@ -6,6 +6,9 @@
 
 This is a JavaScript package that can be used to integrate new Reddit interactions from a specified subreddit into your organization's Orbit workspace.
 
+![](docs/activity-post.png)
+![](docs/activity-comment.png)
+
 |<p align="left">:sparkles:</p> This is a *community project*. The Orbit team does its best to maintain it and keep it up to date with any recent API changes.<br/><br/>We welcome community contributions to make sure that it stays current. <p align="right">:sparkles:</p>|
 |-----------------------------------------|
 
