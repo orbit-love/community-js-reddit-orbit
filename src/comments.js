@@ -82,6 +82,7 @@ const prepare = comments => {
                     link: `https://reddit.com${item.permalink}`,
                     link_text: `View post on ${item.subreddit_name_prefixed}`,
                     title: `Comment on ${item.link_title} in ${item.subreddit_name_prefixed}`,
+                    tags: ['channel:reddit'],
                     activity_type: 'reddit:comment',
                     key: `reddit-comment-${item.author.name}-${item.created_utc}`,
                     occurred_at: new Date(item.created_utc*1000).toISOString()
