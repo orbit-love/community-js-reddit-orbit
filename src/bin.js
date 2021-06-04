@@ -23,7 +23,13 @@ async function main() {
     else hours = args.hours
 
     if(args.posts) {
-        const posts = await orbitReddit.getPosts({ subreddit: args.subreddit, hours })
+        let posts = await orbitReddit.getPosts({ subreddit: args.subreddit, hours })
+        if(args.filter) posts = posts.filter(p => {
+            const inTitle = p.title.toLowerCase().includes(args.filter.toLowerCase())
+            const inBody = p.selftext.toLowerCase().includes(args.filter.toLowerCase())
+            const inUrl = p.url.toLowerCase().includes(args.filter.toLowerCase())
+            return inTitle || inBody || inUrl
+        })
         console.log(`Fetched ${posts.length} posts from the provided timeframe`)
         const prepared = await orbitReddit.preparePosts(posts)
         console.log(`Posts are prepared as Orbit activities. Sending them off now...`)
@@ -32,7 +38,15 @@ async function main() {
     }
 
     if(args.comments) {
-        const comments = await orbitReddit.getComments({ subreddit: args.subreddit, hours })
+        let comments = await orbitReddit.getComments({ subreddit: args.subreddit, hours })
+        if(args.filter) {
+            comments = comments.filter(c => {
+                const inTitle = c.link_title.toLowerCase().includes(args.filter.toLowerCase())
+                const inBody = c.body.toLowerCase().includes(args.filter.toLowerCase())
+                return inTitle || inBody
+            })
+        }
+        console.log(comments.map(c => c.link_title))
         console.log(`Fetched ${comments.length} comments from the provided timeframe`)
         const prepared = await orbitReddit.prepareComments(comments)
         console.log(`Comments are prepared as Orbit activities. Sending them off now...`)

@@ -78,7 +78,7 @@ const prepare = posts => {
         const p = posts.map(item => {
             return {
                 activity: {
-                    description: `Title: ${item.title}`,
+                    description: item.title,
                     link: `https://reddit.com${item.permalink}`,
                     link_text: `View post on ${item.subreddit_name_prefixed}`,
                     title: `Posted to ${item.subreddit_name_prefixed}`,

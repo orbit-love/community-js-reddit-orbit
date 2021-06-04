@@ -92,11 +92,20 @@ npx @orbit-love/reddit --posts --subreddit=javascript
 npx @orbit-love/reddit --comments --subreddit=javascript
 ```
 
+### Timeframe
+
 By default this will get the last 24 hours worth of activity, but this can be explicitly overridden:
 
 ```
 npx @orbit-love/reddit --posts --subreddit=javascript --hours=12
 ```
+
+### Filtering
+
+You can pass in a `--filter=term` flag to filter the results by a single term.
+
+* For posts this will match if the post title, url or body text contain the term.
+* For comments this will match if it was left on a post with a title containing the term, or the comment itself contains the term.
 
 ## GitHub Actions Automation Setup
 
