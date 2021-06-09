@@ -69,8 +69,8 @@ const orbitReddit = new OrbitReddit()
 // Allows you to go back a number of hours and only get posts in that timeframe
 const posts = await orbitReddit.getPosts({ subreddit: 'javascript', hours: 24 })
 const prepared = await orbitReddit.preparePosts(posts)
-const added = await orbitReddit.addActivities(prepared)
-console.log(added) // "Added n activities to your Orbit workspace"
+const summary = await orbitReddit.addActivities(prepared)
+console.log(summary)
 ```
 
 ### Add New Comments In Subreddit
@@ -82,8 +82,8 @@ const orbitReddit = new OrbitReddit()
 // Allows you to go back a number of hours and only get posts in that timeframe
 const comments = await orbitReddit.getComments({ subreddit: 'javascript', hours: 24 })
 const prepared = await orbitReddit.prepareComments(comments)
-const added = await orbitReddit.addActivities(prepared)
-console.log(added) // "Added n activities to your Orbit workspace"
+const summary = await orbitReddit.addActivities(prepared)
+console.log(summary)
 ```
 
 ## CLI Usage
