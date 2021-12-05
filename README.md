@@ -38,7 +38,10 @@ The application requires the following environment variables:
 | `ORBIT_API_KEY`        | API key for Orbit                 | Found in `Account Settings` in your Orbit workspace                                                        |
 | `ORBIT_WORKSPACE_ID`   | ID for your Orbit workspace       | Last part of the Orbit workspace URL, i.e. `https://app.orbit.love/my-workspace`, the ID is `my-workspace` |
 
-- Your Reddit username cannot have 2FA assigned. If you do, create a new reddit account without 2FA for this import.
+\*PLEASE NOTE: For this to work, your Reddit account should have 2FA _disabled_ AND needs to have a passwords set.
+
+- If you used your Google or Apple account to sign up to Reddit and don't have an account you can disconnect it and then you'll be able to set an account (an reconnect your Google or Apple account after).
+- If you want to have 2FA enabled on your main Reddit account (you probably should): create an additional acocunt to just set up this integration and don't use your main account.
 
 ## Package Usage
 
