@@ -85,7 +85,7 @@ class OrbitReddit {
               stats.added++;
             })
             .catch((err) => {
-              if (err.errors?.key) stats.duplicates++;
+              if (err.errors && err.errors.key) stats.duplicates++;
               else {
                 stats.errors.push(err);
               }
