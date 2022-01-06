@@ -45,7 +45,7 @@ async function main() {
     const prepared = await orbitReddit.preparePosts(posts);
     console.log(`Posts are prepared as Orbit activities. Sending them off now...`);
     const response = await orbitReddit.addActivities(prepared);
-    console.log(response); // "Added n activities to the workspace-id Orbit workspace"
+    console.log(JSON.stringify(response, null, 2)); // "Added n activities to the workspace-id Orbit workspace"
   }
 
   if (args.comments) {
@@ -61,7 +61,7 @@ async function main() {
     const prepared = await orbitReddit.prepareComments(comments);
     console.log(`Comments are prepared as Orbit activities. Sending them off now...`);
     const response = await orbitReddit.addActivities(prepared);
-    console.log(response); // "Added n activities to the workspace-id Orbit workspace"
+    console.log(JSON.stringify(response, null, 2)); // "Added n activities to the workspace-id Orbit workspace"
   }
 }
 
