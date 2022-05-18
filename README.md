@@ -1,10 +1,8 @@
-# ⛔️ DEPRECATED: LinkedIn to Orbit Workspace Ruby App
+# ⛔️ DEPRECATED: Reddit to Orbit Workspace Ruby App
 
-This repository is no longer recommended or maintained and it will soon be marked as archived in Github. Huge thanks to the original authors and contributors for providing this Github Actions template to our community. To add LinkedIn interactions to your Orbit workspace, you can now request access to the Linkedin integration under `Workspace Settings > Integrations`. 
+This repository is no longer recommended or maintained and it will soon be marked as archived in Github. Huge thanks to the original authors and contributors for providing this Github Actions template to our community. To add Reddit interactions to your Orbit workspace, you can now request access to the Linkedin integration under `Workspace Settings > Integrations`. 
 
 ---
-
-# Reddit to Orbit Workspace
 
 ![Build Status](https://github.com/orbit-love/community-js-reddit-orbit/workflows/CI/badge.svg)
 [![npm version](https://badge.fury.io/js/%40orbit-love%2Freddit.svg)](https://badge.fury.io/js/%40orbit-love%2Freddit)
